@@ -128,31 +128,3 @@ class LinkedList:
             pred.next = pred.next.next  
             return  
  
- 
-    def get_item(self): 
-        current = self.head 
-        while current != None: 
-            yield current.value 
-            current = current.next 
- 
-my_list = LinkedList() 
-my_list.append_end(1) 
-my_list.append_end(0) 
-my_list.append_end(2) 
-my_list.append_end(0) 
-my_list.append_end(3) 
-my_list.append_end(0) 
-my_list.append_end(4) 
- 
-try:
-    # my_list.remove_first()
-    # my_list.remove_last() 
-    # my_list.remove_at(8)
-    # my_list.remove_first_value(0) 
-    # my_list.remove_last_value(0)
-
-except ValueError as e:
-    print(e) 
- 
-for value in my_list.get_item(): 
-    print(value)
