@@ -7,10 +7,22 @@ class LinkedList:
         def __init__(self, value):
             self.value = value
 
-    head: Item = None
-    __count: int = 0
 
-    @property
+    def __init__(self): 
+        self.head = None
+
+    def __len__(self): 
+            count = 0 
+            current = self.head 
+            while current: 
+                count += 1 
+                current = current.next 
+            return count 
+
+
+
+    head: Item = None
+
     def count(self):
         index = -1
         current = self.head
@@ -90,41 +102,45 @@ class LinkedList:
  
  
  
-    def remove_first_value(self,rm):             
-        '''удаление по значению превого элемента''' 
+    def remove_first_value(self, rm):
+        '''удаление по значению первого элемента'''
         if self.head is None:
             raise ValueError("Список пуст")
-        current = self.head 
- 
-        if current is not None: 
-            if current.value==rm: 
-                self.head = current.next 
-                current = None 
-                return 
-        while current is not None: 
-            if current.value==rm: 
-                break 
-            last = current 
-            current = current.next 
-        if current == None: 
-            return 
-        last.next = current.next 
+        current = self.head
+
+        if current is not None:
+            if current.value == rm:
+                self.head = current.next
+                current = None
+                return
+        while current is not None:
+            if current.value == rm:
+                break
+            last = current
+            current = current.next
+        if current is None:
+            raise ValueError("Элемент не найден")
+
+        last.next = current.next
         current = None 
+            
  
- 
-    def remove_last_value(self,rm): 
+    def remove_last_value(self, rm):
         '''удаление по значению последнего элемента'''
         if self.head is None:
             raise ValueError("Список пуст")
-        current = self.head   
-        pred = None  
-      
-        while current.next is not None:  
-            if current.next.value == rm:  
-                pred = current  
-            current = current.next  
-     
-        if pred is not None:  
-            pred.next = pred.next.next  
-            return  
+        current = self.head
+
+        while current.next is not None:
+            if current.next.value == rm:
+                current.next = current.next.next
+                return
+
+            current = current.next
+
+        if self.head.value == rm:
+            self.head = self.head.next
+            return
+
+        else: raise ValueError("Элемент не найден")
  
